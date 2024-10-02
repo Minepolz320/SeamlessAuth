@@ -18,6 +18,11 @@ public class CommonProxy {
         SeamlessAuth.LOG.info(Tags.MODNAME + " (" + Tags.VERSION + ") loading...");
         Config.synchronizeConfiguration(event.getSuggestedConfigurationFile());
 
+    }
+
+    public void init(FMLInitializationEvent event) {}
+
+    public void postInit(FMLPostInitializationEvent event) {
         /** packet registration **/
         /* server-side */
         EnumConnectionState.LOGIN.func_150751_a(2, KeyResponse.class);
@@ -28,10 +33,6 @@ public class CommonProxy {
 
         PacketDispatcher.registerPackets();
     }
-
-    public void init(FMLInitializationEvent event) {}
-
-    public void postInit(FMLPostInitializationEvent event) {}
 
     public void serverStarting(FMLServerStartingEvent event) {}
 }

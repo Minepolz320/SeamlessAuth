@@ -35,8 +35,9 @@ public abstract class ServerMixin {
 
     @Inject(at = @At("RETURN"), method = "processLoginStart(Lnet/minecraft/network/login/client/C00PacketLoginStart;)V")
     public void processLoginStart(C00PacketLoginStart packetIn, CallbackInfo ci) {
-        if (field_147328_g != NetHandlerLoginServer.LoginState.READY_TO_ACCEPT || field_147333_a.isLocalChannel())
+        if (field_147328_g != NetHandlerLoginServer.LoginState.READY_TO_ACCEPT) {
             return;
+        }
 
         SeamlessAuth.LOG.info("Sending KeyRequest to client...");
         field_147328_g = NetHandlerLoginServer.LoginState.AUTHENTICATING;
